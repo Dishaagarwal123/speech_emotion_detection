@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sound Emotion Detector</title>
+	<style>
+		{
+			box-sizing: border-box;
+		}
+		
+		body {
+			margin: 0;
+			font-family: Arial, sans-serif;
+		}
+		
+		h1 {
+			font-size: 2.5rem;
+			font-weight: bold;
+			margin-bottom: 1rem;
+		}
+		
+		button {
+			padding: 0.5rem 1rem;
+			font-size: 1rem;
+			border: none;
+			border-radius: 0.25rem;
+			background-color: #0077cc;
+			color: white;
+			cursor: pointer;
+			transition: background-color 0.2s ease;
+		}
+		
+		button:hover {
+			background-color: #0059a6;
+		}
+		
+		input[type="file"] {
+			display: block;
+			margin-bottom: 1rem;
+		}
+		
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 2rem;
+			text-align: center;
+		}
+		
+		#result {
+			margin-top: 2rem;
+			font-size: 1.25rem;
+			font-weight: bold;
+		}
+		
+	</style>
+	{% comment %} <link rel="stylesheet" type="text/css" href="style.css"> {% endcomment %}
+</head>
+<body>
+	<div class="container">
+		<h1>Sound Emotion Detector</h1>
+		<div>
+			<form method="post" action="{% url 'detect_emotion' %}" enctype="multipart/form-data">
+				{% csrf_token %}
+				<input type="file" name="audio_file" >
+				<input type="submit" value="Upload">
+			</form>
+		</div>
+		{% comment %} <div>
+			<button id="record-button">Record</button>
+			<button id="stop-button" >Stop</button>
+			<button id="pause-button" >Pause</button>
+			<button id="play-button" >Listen to Recording</button>
+            <button id="submit-button" >submit</button>
+		</div> {% endcomment %}
+		<div id="result"></div>
+	</div>
+
+	 <script src="script.js"></script> 
+</body>
+</html>
